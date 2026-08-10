@@ -3,7 +3,7 @@
 .env.local
 .env.*.local
 *.pem
-application.properties
+application-local.properties
 application-dev.properties
 application-prod.properties
 secrets.json
