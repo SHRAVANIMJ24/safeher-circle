@@ -436,3 +436,114 @@ input:focus, select:focus, textarea:focus {
 }
 
 .site-foot strong { color: var(--ink); }
+
+/* ---------------------------------------------------------------
+   Append these to the bottom of src/styles.css
+   --------------------------------------------------------------- */
+
+/* ---------- the panic button ---------- */
+
+.panic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 0 8px;
+}
+
+/*
+   Large, centred, and reachable with a thumb. The size is not decoration:
+   this gets pressed in a hurry, possibly one-handed, possibly without
+   looking directly at the screen.
+*/
+.panic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--alert);
+    background: var(--surface);
+    color: var(--alert);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    cursor: pointer;
+    padding: 0 24px;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.panic:hover { background: #fdf1ec; }
+
+.panic-on {
+    background: var(--alert);
+    color: #fff;
+    animation: panic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes panic-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(180, 68, 30, 0.4); }
+    50%      { box-shadow: 0 0 0 16px rgba(180, 68, 30, 0); }
+}
+
+/* ---------- live alert banner ---------- */
+
+.alert-live {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    background: #fdf1ec;
+    border: 1px solid #e8c4b4;
+    color: #8c3416;
+}
+
+.btn-safe {
+    background: var(--sage);
+    color: #fff;
+    border-color: var(--sage);
+}
+.btn-safe:hover { background: #245049; }
+
+/* ---------- sound picker ---------- */
+
+.sound-list { display: flex; flex-direction: column; gap: 10px; }
+
+.sound {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    cursor: pointer;
+}
+
+.sound-on { border-color: var(--plum); background: var(--plum-soft); }
+
+.sound input { width: auto; margin: 0; }
+
+.sound-text { flex: 1; display: flex; flex-direction: column; }
+.sound-text strong { font-size: 15px; }
+.sound-text span { font-size: 14px; color: var(--ink-soft); }
+
+/* ---------- contact list ---------- */
+
+.contact-list { list-style: none; margin: 0; padding: 0; }
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.contact-list li:last-child { border-bottom: none; }
+
+.contact-list strong { display: block; font-size: 15px; }
+.contact-list span { font-size: 14px; color: var(--ink-soft); }

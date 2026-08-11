@@ -6,7 +6,8 @@ import PostDetailPage from "./pages/PostDetailPage";
 import SignInPage from "./pages/SignInPage";
 import JoinPage from "./pages/JoinPage";
 import NewPostPage from "./pages/NewPostPage";
-
+import SafetyPage from "./pages/SafetyPage";
+import ContactsPage from "./pages/ContactsPage";
 /** Sends signed-out visitors to the sign-in page instead of a blank screen. */
 function RequireAuth({ children }) {
     const { user, loading } = useAuth();
@@ -34,6 +35,8 @@ export default function App() {
                                 </RequireAuth>
                             }
                         />
+                        <Route path="/safety" element={<RequireAuth><SafetyPage /></RequireAuth>} />
+                        <Route path="/contacts" element={<RequireAuth><ContactsPage /></RequireAuth>} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>

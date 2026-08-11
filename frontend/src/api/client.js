@@ -111,4 +111,26 @@ export const api = {
 
     createPost: (data) =>
         request("/api/posts", { method: "POST", body: data, auth: true }),
+
+    // ---------------------------------------------------------------
+// Add these five entries to the `api` object at the bottom of
+// src/api/client.js, just after createPost.
+// ---------------------------------------------------------------
+
+    contacts: () => request("/api/contacts", { auth: true }),
+
+    addContact: (data) =>
+        request("/api/contacts", { method: "POST", body: data, auth: true }),
+
+    removeContact: (id) =>
+        request(`/api/contacts/${id}`, { method: "DELETE", auth: true }),
+
+    triggerSos: (data) =>
+        request("/api/sos", { method: "POST", body: data, auth: true }),
+
+    activeAlert: () => request("/api/sos/active", { auth: true }),
+
+    markSafe: (id) =>
+        request(`/api/sos/${id}/safe`, { method: "POST", auth: true }),
+
 };

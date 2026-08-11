@@ -20,6 +20,7 @@ export default function Header() {
                     {user ? (
                         <>
                             <Handle handle={user.anonHandle} />
+                            <Link to="/safety" className="btn">Alarm</Link>
                             <Link to="/new" className="btn btn-primary">Write a post</Link>
                             <button className="btn" onClick={handleSignOut}>Sign out</button>
                         </>
