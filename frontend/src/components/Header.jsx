@@ -15,6 +15,7 @@ export default function Header() {
         <header className="masthead">
             <div className="masthead-inner">
                 <Link to="/" className="wordmark">SafeHer Circle</Link>
+                <Link to="/help" className="btn">Get help</Link>
                 <span className="masthead-spacer" />
                 <nav>
                     {user ? (

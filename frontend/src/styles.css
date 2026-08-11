@@ -863,3 +863,79 @@ html { scroll-padding-top: 76px; }
     text-align: center;
     max-width: 34ch;
 }
+/* ---------- directory ---------- */
+
+.directory-heading {
+    font-size: 15px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 28px 0 12px;
+}
+
+.org-list { list-style: none; margin: 0; padding: 0; }
+
+.org-list > li + li { margin-top: 12px; }
+
+.org {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+}
+
+.org-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.org-head h3 {
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.org-badge {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #e7f0ed;
+    color: var(--sage);
+    font-weight: 500;
+}
+
+.org-type {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--ink-faint);
+}
+
+.org-body {
+    margin: 10px 0 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+}
+
+.org-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+/*
+   Stated plainly rather than hidden in small print. Someone deciding whether
+   to trust a number needs to know how much checking stands behind it.
+*/
+.org-unverified {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+}

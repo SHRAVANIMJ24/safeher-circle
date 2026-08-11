@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { Link } from "react-router-dom";
 import Header from "./components/Header";
 import FeedPage from "./pages/FeedPage";
 import PostDetailPage from "./pages/PostDetailPage";
@@ -11,7 +12,7 @@ import ContactsPage from "./pages/ContactsPage";
 import MobileNav from "./components/MobileNav";
 import ModerationPage from "./pages/ModerationPage";
 import FakeCallPage from "./pages/FakeCallPage";
-
+import DirectoryPage from "./pages/DirectoryPage";
 
 /** Sends signed-out visitors to the sign-in page instead of a blank screen. */
 function RequireAuth({ children }) {
@@ -44,6 +45,7 @@ export default function App() {
                         <Route path="/contacts" element={<RequireAuth><ContactsPage /></RequireAuth>} />
                         <Route path="/moderation" element={<RequireAuth><ModerationPage /></RequireAuth>} />
                         <Route path="/fake-call" element={<FakeCallPage />} />
+                        <Route path="/help" element={<DirectoryPage />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>
@@ -51,8 +53,8 @@ export default function App() {
                 <footer className="site-foot">
                     <div className="shell" style={{ paddingBottom: 0 }}>
                         This is a student project, not an emergency service. In an
-                        emergency in India, dial <strong>112</strong>. The women's
-                        helpline is <strong>181</strong>.
+                        emergency in India, dial <strong>112</strong>.{" "}
+                        <Link to="/help">More numbers and organisations</Link>.
                     </div>
                 </footer>
                 <MobileNav />

@@ -50,6 +50,7 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/api/moderation/**").hasAnyRole("MODERATOR", "ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/api/directory/**").permitAll()
                     .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class);

@@ -157,6 +157,17 @@ export const api = {
             body: decision,
             auth: true,
         }),
+    
+
+    directory: ({ city, type } = {}) => {
+        const query = new URLSearchParams();
+        if (city) query.set("city", city);
+        if (type) query.set("type", type);
+        const suffix = query.toString() ? `?${query}` : "";
+        return request(`/api/directory${suffix}`);
+    },
+
+    directoryCities: () => request("/api/directory/cities"),
 
 
 };
