@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../api/client";
 import Handle from "../components/Handle";
+import CommentThread from "../components/CommentThread";
 
 export default function PostDetailPage() {
     const { id } = useParams();
@@ -56,9 +57,7 @@ export default function PostDetailPage() {
                 <p className="article-body">{post.body}</p>
             </article>
 
-            <p style={{ color: "var(--ink-faint)", fontSize: 14, marginTop: 16 }}>
-                Replies are coming soon.
-            </p>
+            <CommentThread postId={post.id} postAuthorHandle={post.authorHandle} />
         </div>
     );
 }

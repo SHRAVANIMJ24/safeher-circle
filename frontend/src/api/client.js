@@ -133,4 +133,19 @@ export const api = {
     markSafe: (id) =>
         request(`/api/sos/${id}/safe`, { method: "POST", auth: true }),
 
+    // Add to the `api` object in src/api/client.js
+
+    comments: (postId) => request(`/api/posts/${postId}/comments`),
+
+    addComment: (postId, data) =>
+        request(`/api/posts/${postId}/comments`, {
+            method: "POST",
+            body: data,
+            auth: true,
+        }),
+
+    removeComment: (id) =>
+        request(`/api/comments/${id}`, { method: "DELETE", auth: true }),
+
+
 };
