@@ -21,6 +21,9 @@ export default function Header() {
                         <>
                             <Handle handle={user.anonHandle} />
                             <Link to="/safety" className="btn">Alarm</Link>
+                            {(user.role === "MODERATOR" || user.role === "ADMIN") && (
+                                <Link to="/moderation" className="btn">Queue</Link>
+                            )}
                             <Link to="/new" className="btn btn-primary">Write a post</Link>
                             <button className="btn" onClick={handleSignOut}>Sign out</button>
                         </>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import { useAuth } from "../context/AuthContext";
 import Handle from "./Handle";
-
+import ReportButton from "./ReportButton";
 /**
  * Replies on a post.
  *
@@ -121,6 +121,9 @@ function CommentBody({ comment }) {
                 })}</span>
             </div>
             <p className="comment-body">{comment.body}</p>
+            <div style={{ marginTop: 6 }}>
+                <ReportButton targetType="COMMENT" targetId={comment.id} />
+            </div>
         </>
     );
 }

@@ -39,7 +39,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { 
+    -webkit-text-size-adjust: 100%; 
+    scroll-padding-top: 76px;
+}
 
 body {
     margin: 0;
@@ -620,9 +623,7 @@ input:focus, select:focus, textarea:focus {
     cursor: pointer;
     text-decoration: underline;
 }
-/* ---------------------------------------------------------------
-   Append to the bottom of src/styles.css
-   --------------------------------------------------------------- */
+
 
 /*
    Stops a heading landing underneath the sticky header when the browser
@@ -687,3 +688,74 @@ html { scroll-padding-top: 76px; }
 
     .panic { width: 170px; height: 170px; font-size: 18px; }
 }
+/* Append to src/styles.css */
+
+/* ---------- reporting ---------- */
+
+/*
+   Small and grey on purpose. A prominent report button on a board about
+   harassment gets used as a weapon against posts people merely dislike.
+*/
+.report-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.report-trigger:hover { color: var(--ink-soft); }
+
+.report-done { font-size: 13px; color: var(--sage); }
+
+.report-box {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+}
+
+.report-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.report-reason {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.report-reason input { width: auto; margin: 0; }
+
+.report-detail {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    background: var(--paper);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.reason-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #fdf1ec;
+    color: #8c3416;
+}
+
+.btn-remove {
+    background: var(--alert);
+    color: #fff;
+    border-color: var(--alert);
+}
+.btn-remove:hover { background: #97381a; }

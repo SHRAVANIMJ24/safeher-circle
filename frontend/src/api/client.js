@@ -112,10 +112,7 @@ export const api = {
     createPost: (data) =>
         request("/api/posts", { method: "POST", body: data, auth: true }),
 
-    // ---------------------------------------------------------------
-// Add these five entries to the `api` object at the bottom of
-// src/api/client.js, just after createPost.
-// ---------------------------------------------------------------
+
 
     contacts: () => request("/api/contacts", { auth: true }),
 
@@ -133,7 +130,7 @@ export const api = {
     markSafe: (id) =>
         request(`/api/sos/${id}/safe`, { method: "POST", auth: true }),
 
-    // Add to the `api` object in src/api/client.js
+    
 
     comments: (postId) => request(`/api/posts/${postId}/comments`),
 
@@ -146,6 +143,20 @@ export const api = {
 
     removeComment: (id) =>
         request(`/api/comments/${id}`, { method: "DELETE", auth: true }),
+    
+    
+    report: (data) =>
+        request("/api/reports", { method: "POST", body: data, auth: true }),
+
+    moderationQueue: (status = "OPEN", page = 0) =>
+        request(`/api/moderation/queue?status=${status}&page=${page}`, { auth: true }),
+
+    decideReport: (id, decision) =>
+        request(`/api/moderation/reports/${id}`, {
+            method: "POST",
+            body: decision,
+            auth: true,
+        }),
 
 
 };
