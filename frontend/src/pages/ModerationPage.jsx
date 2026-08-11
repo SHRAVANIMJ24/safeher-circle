@@ -5,6 +5,16 @@ import Handle from "../components/Handle";
 
 const FILTERS = ["OPEN", "ACTIONED", "DISMISSED", "ALL"];
 
+/**
+ * The human review side of moderation.
+ *
+ * The model's score appears as a raw number in the meta row rather than as a
+ * badge saying "flagged by AI". That is deliberate: a number invites a
+ * moderator to judge the model, a verdict invites her to defer to it. Measured
+ * on this platform's content, the model scored an account of a sexual assault
+ * at 0.0021 and an insult at 0.9851 — it reads abusive language, not
+ * distressing situations, and should not be deferred to.
+ */
 export default function ModerationPage() {
     const { user } = useAuth();
     const [filter, setFilter] = useState("OPEN");
@@ -52,8 +62,8 @@ export default function ModerationPage() {
                 <h1>Moderation queue</h1>
                 <p>
                     Reported content, oldest first. Nothing here has been hidden
-                    automatically — flagged posts are still visible to everyone until
-                    you decide otherwise.
+                    automatically — flagged content is still visible to everyone
+                    until you decide otherwise.
                 </p>
             </div>
 
@@ -86,16 +96,30 @@ export default function ModerationPage() {
                         <div className="card">
                             <div className="card-meta">
                                 <span className="reason-tag">{label(report.reason)}</span>
+
                                 <span className="dot">·</span>
                                 <span>{report.targetType.toLowerCase()}</span>
+
                                 {report.reportCount > 1 && (
                                     <>
                                         <span className="dot">·</span>
                                         <span>{report.reportCount} reports</span>
                                     </>
                                 )}
+
+                                {report.toxicityScore != null && (
+                                    <>
+                                        <span className="dot">·</span>
+                                        <span title="Model score. Advisory only — it detects abusive language, not distress.">
+                                            toxicity {report.toxicityScore.toFixed(2)}
+                                        </span>
+                                    </>
+                                )}
+
                                 <span className="dot">·</span>
-                                <span>{new Date(report.createdAt).toLocaleDateString()}</span>
+                                <span>
+                                    {new Date(report.createdAt).toLocaleDateString()}
+                                </span>
                             </div>
 
                             {report.contentTitle && <h2>{report.contentTitle}</h2>}

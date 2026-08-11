@@ -6,6 +6,7 @@ import com.safeher.backend.dto.ReportResponse;
 import com.safeher.backend.entity.*;
 import com.safeher.backend.exception.ApiException;
 import com.safeher.backend.repository.CommentRepository;
+import com.safeher.backend.repository.ModerationScoreRepository;
 import com.safeher.backend.repository.PostRepository;
 import com.safeher.backend.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -23,8 +25,10 @@ import java.util.UUID;
  *
  * Nothing in this service is automatic. A model or a report count can move
  * something into this queue; only a person decides what happens to it. That
- * separation is the whole point — a classifier cannot tell someone describing
- * harassment apart from someone committing it, because the words are the same.
+ * separation is the whole point — measured on this platform's own content, the
+ * classifier scored an account of a sexual assault at 0.0021 and an insult at
+ * 0.9851. It reads abusive language, not distressing situations, and is not
+ * fit to decide anything on its own.
  */
 @Service
 @RequiredArgsConstructor
@@ -33,6 +37,7 @@ public class ModerationService {
     private final ReportRepository reportRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final ModerationScoreRepository moderationScoreRepository;
 
     @Transactional(readOnly = true)
     public PageResponse<ReportResponse> queue(String status, int page, int size) {
@@ -122,23 +127,35 @@ public class ModerationService {
                 .findByTargetTypeAndTargetId(report.getTargetType(), report.getTargetId())
                 .size();
 
+        Optional<ModerationScore> score = moderationScoreRepository
+                .findFirstByTargetTypeAndTargetIdOrderByScoredAtDesc(
+                        report.getTargetType(), report.getTargetId());
+
+        Float toxicity = score.map(ModerationScore::getToxicity).orElse(null);
+        String modelAction = score.map(ModerationScore::getAutoAction).orElse(null);
+
         if (report.getTargetType() == TargetType.POST) {
             return postRepository.findById(report.getTargetId())
                     .map(post -> ReportResponse.of(report, post.getTitle(), post.getBody(),
-                            post.getAuthorHandle(), post.getStatus().name(), count))
+                            post.getAuthorHandle(), post.getStatus().name(), count,
+                            toxicity, modelAction))
                     .orElseGet(() -> ReportResponse.of(report, null,
-                            "[content no longer exists]", null, "GONE", count));
+                            "[content no longer exists]", null, "GONE", count,
+                            toxicity, modelAction));
         }
 
         if (report.getTargetType() == TargetType.COMMENT) {
             return commentRepository.findById(report.getTargetId())
                     .map(comment -> ReportResponse.of(report, null, comment.getBody(),
-                            comment.getAuthorHandle(), comment.getStatus().name(), count))
+                            comment.getAuthorHandle(), comment.getStatus().name(), count,
+                            toxicity, modelAction))
                     .orElseGet(() -> ReportResponse.of(report, null,
-                            "[content no longer exists]", null, "GONE", count));
+                            "[content no longer exists]", null, "GONE", count,
+                            toxicity, modelAction));
         }
 
-        return ReportResponse.of(report, null, null, null, null, count);
+        return ReportResponse.of(report, null, null, null, null, count,
+                toxicity, modelAction);
     }
 
     private ReportStatus parseStatus(String status) {

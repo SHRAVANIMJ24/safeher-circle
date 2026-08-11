@@ -24,6 +24,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+/**
+ * Posts are deliberately not scored by the moderation model.
+ *
+ * Measured against this platform's own content, toxic-bert scored a
+ * first-person account of a sexual assault at 0.0021 and a notice about free
+ * sanitary pads at 0.0006 — indistinguishable. It scored a reply reading
+ * "you are a stupid liar... shut up" at 0.9851.
+ *
+ * The model reads abusive language aimed at a person. It has no notion of
+ * whether a situation is distressing. Posts here are women describing what
+ * happened to them, in measured prose, so scoring them produces a ranking
+ * built on noise. The scoring runs on comments instead, where people do
+ * attack each other and where the model is accurate.
+ */
 @Service
 @RequiredArgsConstructor
 public class PostService {

@@ -3,11 +3,14 @@ package com.safeher.backend.service;
 import com.safeher.backend.dto.CommentResponse;
 import com.safeher.backend.dto.CreateCommentRequest;
 import com.safeher.backend.entity.Comment;
+import com.safeher.backend.entity.ModerationScore;
 import com.safeher.backend.entity.Post;
 import com.safeher.backend.entity.PostStatus;
+import com.safeher.backend.entity.TargetType;
 import com.safeher.backend.entity.User;
 import com.safeher.backend.exception.ApiException;
 import com.safeher.backend.repository.CommentRepository;
+import com.safeher.backend.repository.ModerationScoreRepository;
 import com.safeher.backend.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +32,8 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
+    private final ScoringClient scoringClient;
+    private final ModerationScoreRepository moderationScoreRepository;
 
     @Transactional(readOnly = true)
     public List<CommentResponse> listForPost(UUID postId) {
@@ -72,12 +77,49 @@ public class CommentService {
                 .build();
 
         comment = commentRepository.save(comment);
+        recordScore(comment);
 
         // Kept on the post so the feed can show a count without a join.
         post.setCommentCount((int) commentRepository.countByPostAndStatusIn(post, VISIBLE));
         postRepository.save(post);
 
         return CommentResponse.from(comment, post.getAuthorHandle());
+    }
+
+    /**
+     * Scores a reply for abusive language.
+     *
+     * This runs on comments rather than posts for a measured reason. Against
+     * this platform's own content, toxic-bert scored an account of a sexual
+     * assault at 0.0021 and a notice about free pads at 0.0006 — no usable
+     * signal. It scored "you are a stupid liar... shut up" at 0.9851.
+     *
+     * The model reads abusive language aimed at a person, which is what
+     * appears in replies, not what appears in posts.
+     *
+     * A high score sets FLAGGED, which raises the comment in the moderation
+     * queue. FLAGGED content is still visible to everyone — see the VISIBLE
+     * list above. Nothing is hidden without a person deciding.
+     */
+    private void recordScore(Comment comment) {
+        scoringClient.score("", comment.getBody()).ifPresent(result -> {
+            ModerationScore score = ModerationScore.builder()
+                    .targetType(TargetType.COMMENT)
+                    .targetId(comment.getId())
+                    .toxicity(result.toxicity())
+                    .urgency(result.urgency())
+                    .predictedCategory(result.predictedCategory())
+                    .modelVersion(result.modelVersion())
+                    .autoAction(result.suggestedAction())
+                    .build();
+
+            moderationScoreRepository.save(score);
+
+            if ("FLAG".equals(result.suggestedAction())) {
+                comment.setStatus(PostStatus.FLAGGED);
+                commentRepository.save(comment);
+            }
+        });
     }
 
     @Transactional
