@@ -620,3 +620,70 @@ input:focus, select:focus, textarea:focus {
     cursor: pointer;
     text-decoration: underline;
 }
+/* ---------------------------------------------------------------
+   Append to the bottom of src/styles.css
+   --------------------------------------------------------------- */
+
+/*
+   Stops a heading landing underneath the sticky header when the browser
+   scrolls to an anchor or restores a scroll position.
+*/
+html { scroll-padding-top: 76px; }
+
+/* ---------- bottom navigation (mobile only) ---------- */
+
+.mobile-nav { display: none; }
+
+@media (max-width: 720px) {
+
+    .mobile-nav {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        /* Clears the home indicator on phones with gesture navigation. */
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        /* 56px tall keeps every target above the minimum comfortable tap size. */
+        min-height: 56px;
+        padding: 8px 4px;
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 11px;
+        letter-spacing: 0.01em;
+    }
+
+    .mobile-nav-item svg { width: 22px; height: 22px; }
+
+    .mobile-nav-item.active { color: var(--ink); }
+
+    /* The emergency action is the only coloured item, so it can be found
+       by shape and colour without reading the label. */
+    .mobile-nav-alarm { color: var(--alert); }
+    .mobile-nav-alarm.active { color: var(--alert); }
+
+    /* Room for the bar, so the last line of a post is never hidden behind it. */
+    body { padding-bottom: 64px; }
+
+    /* The header keeps the wordmark and the handle; everything else has
+       moved to the bar below, so hide the duplicate links. */
+    .masthead nav .btn { display: none; }
+    .masthead nav .btn:last-child { display: inline-flex; }
+
+    .shell { padding-left: 16px; padding-right: 16px; }
+
+    .panic { width: 170px; height: 170px; font-size: 18px; }
+}

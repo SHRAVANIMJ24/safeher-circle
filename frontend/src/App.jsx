@@ -8,6 +8,7 @@ import JoinPage from "./pages/JoinPage";
 import NewPostPage from "./pages/NewPostPage";
 import SafetyPage from "./pages/SafetyPage";
 import ContactsPage from "./pages/ContactsPage";
+import MobileNav from "./components/MobileNav";
 /** Sends signed-out visitors to the sign-in page instead of a blank screen. */
 function RequireAuth({ children }) {
     const { user, loading } = useAuth();
@@ -40,6 +41,7 @@ export default function App() {
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </main>
+             
                 <footer className="site-foot">
                     <div className="shell" style={{ paddingBottom: 0 }}>
                         This is a student project, not an emergency service. In an
@@ -47,6 +49,7 @@ export default function App() {
                         helpline is <strong>181</strong>.
                     </div>
                 </footer>
+                <MobileNav />
             </AuthProvider>
         </BrowserRouter>
     );
