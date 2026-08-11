@@ -759,3 +759,107 @@ html { scroll-padding-top: 76px; }
     border-color: var(--alert);
 }
 .btn-remove:hover { background: #97381a; }
+
+/* ---------- fake call screen ---------- */
+
+/*
+   Full-bleed and dark, covering everything including the navigation. The
+   illusion only works if there is no trace of a website behind it — a visible
+   header would give the whole thing away to anyone glancing over.
+*/
+.call-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #14161a;
+    color: #f3f2f0;
+    padding: 56px 24px 48px;
+}
+
+.call-top { text-align: center; }
+
+.call-status {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #9aa0aa;
+    letter-spacing: 0.01em;
+}
+
+.call-name {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #f3f2f0;
+    margin: 0;
+}
+
+.call-subtitle {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: #9aa0aa;
+}
+
+.call-avatar {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: #2a2e36;
+    color: #c9ccd2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 40px;
+    margin: 48px 0 auto;
+}
+
+.call-actions {
+    display: flex;
+    gap: 56px;
+    margin-top: auto;
+}
+
+.call-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    color: #9aa0aa;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.call-btn svg {
+    width: 30px;
+    height: 30px;
+    padding: 19px;
+    border-radius: 50%;
+    color: #fff;
+    box-sizing: content-box;
+}
+
+.call-answer svg { background: #2e8b57; }
+.call-decline svg { background: #c9402a; }
+
+/* Only the answer button pulses — it is the one to reach for in a hurry. */
+.call-answer svg { animation: call-breathe 1.6s ease-in-out infinite; }
+
+@keyframes call-breathe {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46, 139, 87, 0.5); }
+    50%      { box-shadow: 0 0 0 14px rgba(46, 139, 87, 0); }
+}
+
+.call-hint {
+    margin: 22px 0 0;
+    font-size: 13px;
+    color: #6f757f;
+    text-align: center;
+    max-width: 34ch;
+}

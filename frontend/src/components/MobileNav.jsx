@@ -31,9 +31,9 @@ export default function MobileNav() {
                         <span>Alarm</span>
                     </NavLink>
 
-                    <NavLink to="/contacts" className="mobile-nav-item">
-                        <IconPeople />
-                        <span>Contacts</span>
+                    <NavLink to="/fake-call" className="mobile-nav-item">
+                        <IconPhone />
+                        <span>Fake call</span>
                     </NavLink>
                 </>
             ) : (
@@ -71,6 +71,14 @@ function IconWrite() {
              strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M4 20h4l10-10a2.8 2.8 0 0 0-4-4L4 16v4z" />
             <path d="M13.5 6.5l4 4" />
+        </svg>
+    );
+}
+function IconPhone() {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
+             strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 3.9c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.3z" />
         </svg>
     );
 }

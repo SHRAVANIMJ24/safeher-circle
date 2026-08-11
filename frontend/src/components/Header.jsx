@@ -21,6 +21,7 @@ export default function Header() {
                         <>
                             <Handle handle={user.anonHandle} />
                             <Link to="/safety" className="btn">Alarm</Link>
+                            <Link to="/fake-call" className="btn">Fake call</Link>
                             {(user.role === "MODERATOR" || user.role === "ADMIN") && (
                                 <Link to="/moderation" className="btn">Queue</Link>
                             )}
