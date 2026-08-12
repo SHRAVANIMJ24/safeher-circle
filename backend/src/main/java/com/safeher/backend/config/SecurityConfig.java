@@ -51,6 +51,8 @@ public class SecurityConfig {
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/api/moderation/**").hasAnyRole("MODERATOR", "ADMIN")
                     .requestMatchers(HttpMethod.GET, "/api/directory/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/donations/listings").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/donations/items").permitAll()
                     .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class);

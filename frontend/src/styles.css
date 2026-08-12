@@ -939,3 +939,99 @@ html { scroll-padding-top: 76px; }
     padding-top: 10px;
     border-top: 1px solid var(--line);
 }
+
+/* ---------- donation board ---------- */
+
+/*
+   Needs and offers are colour-coded but not shouted. Someone asking for pads
+   should not have her listing look like an alarm.
+*/
+.need-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--plum-soft);
+    color: var(--plum);
+}
+
+.give-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #e7f0ed;
+    color: var(--sage);
+}
+
+.listing-hidden {
+    margin: 8px 0 0;
+    font-size: 15px;
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
+/* ---------- claim thread and handover ---------- */
+
+.claim-thread {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+}
+
+.message-list { list-style: none; margin: 0; padding: 0; }
+
+.message-list > li + li {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+}
+
+/*
+   The arrangement sits above the messages, not inside them. Where and when
+   you are meeting is the one thing both people need at a glance, and it is
+   exactly what gets lost in a chat.
+*/
+.handover {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    margin-bottom: 16px;
+}
+
+.handover-agreed {
+    border-color: var(--sage);
+    background: #e7f0ed;
+}
+
+.handover-done {
+    border-color: var(--line);
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+/*
+   System messages sit between the human ones as plain grey lines. They are
+   deliberately not styled as anybody speaking — nobody said this, it just
+   happened.
+*/
+.system-message {
+    font-size: 13px;
+    color: var(--ink-faint);
+    text-align: center;
+    padding: 8px 0;
+    border-top: none !important;
+}
+
+.unread-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--alert);
+    margin-left: 6px;
+    vertical-align: super;
+}

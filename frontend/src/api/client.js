@@ -168,6 +168,76 @@ export const api = {
     },
 
     directoryCities: () => request("/api/directory/cities"),
+    
+    itemTypes: () => request("/api/donations/items"),
+
+    listings: ({ type, item, city } = {}) => {
+        const query = new URLSearchParams();
+        if (type) query.set("type", type);
+        if (item) query.set("item", item);
+        if (city) query.set("city", city);
+        const suffix = query.toString() ? `?${query}` : "";
+        return request(`/api/donations/listings${suffix}`, { auth: true });
+    },
+
+    listing: (id) => request(`/api/donations/listings/${id}`, { auth: true }),
+
+    createListing: (data) =>
+        request("/api/donations/listings", { method: "POST", body: data, auth: true }),
+
+    myListings: () => request("/api/donations/listings/mine", { auth: true }),
+
+    claimListing: (id, data) =>
+        request(`/api/donations/listings/${id}/claim`, {
+            method: "POST", body: data, auth: true,
+        }),
+
+    listingClaims: (id) =>
+        request(`/api/donations/listings/${id}/claims`, { auth: true }),
+
+    myClaims: () => request("/api/donations/claims/mine", { auth: true }),
+
+    acceptClaim: (id) =>
+        request(`/api/donations/claims/${id}/accept`, { method: "POST", auth: true }),
+
+    declineClaim: (id) =>
+        request(`/api/donations/claims/${id}/decline`, { method: "POST", auth: true }),
+
+    claimMessages: (id) =>
+        request(`/api/donations/claims/${id}/messages`, { auth: true }),
+
+    sendClaimMessage: (id, body) =>
+        request(`/api/donations/claims/${id}/messages`, {
+            method: "POST", body: { body }, auth: true,
+        }),
+        withdrawClaim: (id) =>
+        request(`/api/donations/claims/${id}/withdraw`, { method: "POST", auth: true }),
+
+    proposeHandover: (id, data) =>
+        request(`/api/donations/claims/${id}/handover`, {
+            method: "POST", body: data, auth: true,
+        }),
+
+    confirmHandover: (id) =>
+        request(`/api/donations/claims/${id}/handover/confirm`, {
+            method: "POST", auth: true,
+        }),
+
+    completeHandover: (id) =>
+        request(`/api/donations/claims/${id}/complete`, { method: "POST", auth: true }),
+
+    exchangesUnread: () => request("/api/donations/unread", { auth: true }),
+
+    markExchangesSeen: () =>
+        request("/api/donations/seen", { method: "POST", auth: true }),
+
+    markListingFulfilled: (id) =>
+        request(`/api/donations/listings/${id}/fulfilled`, { method: "POST", auth: true }),
+
+    exchangesUnread: () => request("/api/donations/unread", { auth: true }),
+
+    markExchangesSeen: () =>
+        request("/api/donations/seen", { method: "POST", auth: true }),
 
 
 };

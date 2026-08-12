@@ -13,6 +13,10 @@ import MobileNav from "./components/MobileNav";
 import ModerationPage from "./pages/ModerationPage";
 import FakeCallPage from "./pages/FakeCallPage";
 import DirectoryPage from "./pages/DirectoryPage";
+import DonationsPage from "./pages/DonationsPage";
+import NewListingPage from "./pages/NewListingPage";
+import ListingDetailPage from "./pages/ListingDetailPage";
+import MyExchangesPage from "./pages/MyExchangesPage";
 
 /** Sends signed-out visitors to the sign-in page instead of a blank screen. */
 function RequireAuth({ children }) {
@@ -47,6 +51,10 @@ export default function App() {
                         <Route path="/fake-call" element={<FakeCallPage />} />
                         <Route path="/help" element={<DirectoryPage />} />
                         <Route path="*" element={<Navigate to="/" replace />} />
+                        <Route path="/donations" element={<DonationsPage />} />
+                        <Route path="/donations/new" element={<RequireAuth><NewListingPage /></RequireAuth>} />
+                        <Route path="/donations/:id" element={<ListingDetailPage />} />
+                        <Route path="/exchanges" element={<RequireAuth><MyExchangesPage /></RequireAuth>} />
                     </Routes>
                 </main>
              

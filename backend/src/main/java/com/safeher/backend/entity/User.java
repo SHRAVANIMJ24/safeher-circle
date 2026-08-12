@@ -38,7 +38,17 @@ public class User {
     /** Public pseudonym, e.g. "quiet-lark-4471". Never changes. */
     @Column(name = "anon_handle", unique = true, nullable = false, length = 50)
     private String anonHandle;
-
+    /**
+     * A second pseudonym used only on the donation board.
+     *
+     * Generated on first use rather than at registration, so accounts that
+     * never touch the board never get one. Kept separate from anonHandle
+     * because "I cannot afford pads this month" is a disclosure of poverty,
+     * and linking it to the handle that writes about a domestic situation
+     * would let anyone assemble a profile.
+     */
+    @Column(name = "donation_handle", unique = true, length = 50)
+    private String donationHandle;
     @Column(name = "display_city", length = 100)
     private String displayCity;
 
@@ -60,6 +70,10 @@ public class User {
 
     @Column(name = "last_seen_at")
     private Instant lastSeenAt;
+
+    /** When they last opened their exchanges page. Drives the unread dot. */
+    @Column(name = "exchanges_seen_at")
+    private Instant exchangesSeenAt;
 
     @PrePersist
     void onCreate() {
