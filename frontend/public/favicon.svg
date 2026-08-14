@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!--
+    SafeHer Circle.
+
+    An open ring with a dot in the opening. The name is literally a circle,
+    but an open one: a support circle is something you can join, not a wall.
+    The dot is someone standing at the entrance.
+
+    Two elements only, so it survives at 16px in a browser tab.
+  -->
+  <rect width="24" height="24" rx="5" fill="#16181d"/>
+  <g transform="translate(12 12) scale(0.78) translate(-12 -12)">
+    <path d="M19.05 7.25 A8.5 8.5 0 1 0 19.05 16.75"
+          fill="none" stroke="#f7f6f3" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="20.5" cy="12" r="2" fill="#c98fae"/>
+  </g>
+</svg>
