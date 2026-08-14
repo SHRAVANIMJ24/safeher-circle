@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 614" width="900" height="614" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<rect width="900" height="614" fill="#f7f6f3"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#565c68"/></marker>
+<marker id="arrowfaint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8b919c"/></marker>
+</defs>
+<text x="50" y="48" font-size="21" font-weight="600" font-family="Georgia, 'Times New Roman', serif" fill="#16181d">System architecture</text>
+<text x="50" y="69" font-size="13" fill="#8b919c">Four processes. The scoring service is optional — the platform runs without it.</text>
+<rect x="50" y="100" width="800" height="84" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<text x="450.0" y="147.0" text-anchor="middle" font-size="15" font-weight="600" fill="#16181d"></text>
+<text x="80" y="130" text-anchor="start" font-size="15" fill="#16181d" font-weight="600">Browser</text>
+<text x="80" y="148" text-anchor="start" font-size="11.5" fill="#8b919c" font-weight="400">React 19 · Vite · React Router · localhost:5173</text>
+<rect x="380" y="130" width="51.5" height="22" rx="11" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1"/>
+<text x="405.75" y="145" text-anchor="middle" font-size="11" fill="#565c68" font-weight="400">Board</text>
+<rect x="438.5" y="130" width="51.5" height="22" rx="11" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1"/>
+<text x="464.25" y="145" text-anchor="middle" font-size="11" fill="#565c68" font-weight="400">Alarm</text>
+<rect x="497.0" y="130" width="108.2" height="22" rx="11" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1"/>
+<text x="551.1" y="145" text-anchor="middle" font-size="11" fill="#565c68" font-weight="400">Give &amp; receive</text>
+<rect x="612.2" y="130" width="76.69999999999999" height="22" rx="11" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1"/>
+<text x="650.5500000000001" y="145" text-anchor="middle" font-size="11" fill="#565c68" font-weight="400">Directory</text>
+<rect x="695.9000000000001" y="130" width="83.0" height="22" rx="11" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1"/>
+<text x="737.4000000000001" y="145" text-anchor="middle" font-size="11" fill="#565c68" font-weight="400">Moderation</text>
+<line x1="450" y1="184" x2="450" y2="236" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="462" y="208" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">HTTPS · JSON · JWT in the Authorization header</text>
+<rect x="50" y="236" width="800" height="132" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<text x="450.0" y="307.0" text-anchor="middle" font-size="15" font-weight="600" fill="#16181d"></text>
+<text x="80" y="266" text-anchor="start" font-size="15" fill="#16181d" font-weight="600">Spring Boot 4.1</text>
+<text x="80" y="284" text-anchor="start" font-size="11.5" fill="#8b919c" font-weight="400">Java 21 · Spring Security · JPA · localhost:8081</text>
+<rect x="80" y="300" width="240" height="50" rx="8" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1.4"/>
+<text x="200.0" y="322.0" text-anchor="middle" font-size="13" font-weight="600" fill="#16181d">Controllers</text>
+<text x="200.0" y="340.0" text-anchor="middle" font-size="10.5" fill="#8b919c">8 REST controllers</text>
+<rect x="330" y="300" width="240" height="50" rx="8" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1.4"/>
+<text x="450.0" y="322.0" text-anchor="middle" font-size="13" font-weight="600" fill="#16181d">Services</text>
+<text x="450.0" y="340.0" text-anchor="middle" font-size="10.5" fill="#8b919c">auth · posts · SOS · donations · moderation</text>
+<rect x="580" y="300" width="240" height="50" rx="8" fill="#f7f6f3" stroke="#e3e1dc" stroke-width="1.4"/>
+<text x="700.0" y="322.0" text-anchor="middle" font-size="13" font-weight="600" fill="#16181d">Repositories</text>
+<text x="700.0" y="340.0" text-anchor="middle" font-size="10.5" fill="#8b919c">Spring Data JPA</text>
+<line x1="175" y1="368" x2="175" y2="424" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="185" y="398" text-anchor="start" font-size="11" fill="#565c68" font-weight="400">JDBC</text>
+<line x1="450" y1="368" x2="450" y2="424" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="460" y="392" text-anchor="start" font-size="11" fill="#565c68" font-weight="400">POST /score</text>
+<text x="460" y="407" text-anchor="start" font-size="10" fill="#8b919c" font-weight="400">comments only</text>
+<line x1="725" y1="368" x2="725" y2="424" stroke="#8b919c" stroke-width="1.4" marker-end="url(#arrowfaint)" stroke-dasharray="5 4"/>
+<text x="735" y="398" text-anchor="start" font-size="11" fill="#8b919c" font-weight="400">not wired</text>
+<rect x="50" y="424" width="250" height="90" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<text x="175" y="454" text-anchor="middle" font-size="15" fill="#16181d" font-weight="600">PostgreSQL 18</text>
+<text x="175" y="474" text-anchor="middle" font-size="11.5" fill="#8b919c" font-weight="400">18 tables · localhost:5432</text>
+<text x="175" y="494" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">no PostGIS — plain numeric coordinates</text>
+<rect x="325" y="424" width="250" height="90" rx="8" fill="#ffffff" stroke="#6e2b4f" stroke-width="1.4"/>
+<text x="450" y="454" text-anchor="middle" font-size="15" fill="#16181d" font-weight="600">Scoring service</text>
+<text x="450" y="474" text-anchor="middle" font-size="11.5" fill="#8b919c" font-weight="400">FastAPI · toxic-bert · :8000</text>
+<text x="450" y="494" text-anchor="middle" font-size="10.5" fill="#6e2b4f" font-weight="400">advisory only, never removes content</text>
+<rect x="600" y="424" width="250" height="90" rx="8" fill="#f7f6f3" stroke="#cfccc5" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="725" y="454" text-anchor="middle" font-size="15" fill="#8b919c" font-weight="600">SMS provider</text>
+<text x="725" y="474" text-anchor="middle" font-size="11.5" fill="#8b919c" font-weight="400">not implemented</text>
+<text x="725" y="494" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">written to the server log instead</text>
+<line x1="50" y1="548" x2="850" y2="548" stroke="#e3e1dc" stroke-width="1"/>
+<text x="50" y="574" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Alerts go to LoggingAlertSender, which writes the message to the server log. Swapping in a real provider is one class,</text>
+<text x="50" y="592" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">because AlertSender is an interface — which is also why the whole alert flow can be demonstrated with no SMS account.</text>
+</svg>

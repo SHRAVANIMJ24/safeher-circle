@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 800" width="940" height="800" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<rect width="940" height="800" fill="#f7f6f3"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#565c68"/></marker>
+<marker id="arrowfaint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8b919c"/></marker>
+</defs>
+<text x="50" y="48" font-size="21" font-weight="600" font-family="Georgia, 'Times New Roman', serif" fill="#16181d">Main user flows</text>
+<text x="50" y="69" font-size="13" fill="#8b919c">Reading needs no account. Everything that creates something does.</text>
+<rect x="367.91999999999996" y="92" width="204.16000000000003" height="32" rx="16" fill="#16181d"/>
+<text x="470" y="113" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="600">Someone opens the site</text>
+<line x1="470" y1="124" x2="470" y2="158" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="295" y="158" width="350" height="58" rx="8" fill="#e7f0ed" stroke="#2e6259" stroke-width="1.4"/>
+<text x="470.0" y="182.0" text-anchor="middle" font-size="12.5" fill="#16181d" font-weight="400">Board, directory and listings are readable</text>
+<text x="470.0" y="200.0" text-anchor="middle" font-size="11.5" fill="#8b919c" font-weight="400">No account, no sign-in wall</text>
+<line x1="470" y1="216" x2="470" y2="250" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<polygon points="470,250.0 595.0,288 470,326.0 345.0,288" fill="#f3e8ee" stroke="#6e2b4f" stroke-width="1.4"/>
+<text x="470" y="285" text-anchor="middle" font-size="12" fill="#6e2b4f" font-weight="600">Wants to post, ask,</text>
+<text x="470" y="301" text-anchor="middle" font-size="12" fill="#6e2b4f" font-weight="600">give or raise an alarm?</text>
+<path d="M595 288 L760 288 L760 214" fill="none" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="680" y="278" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">no — keeps reading</text>
+<line x1="470" y1="326" x2="470" y2="358" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="482" y="346" text-anchor="start" font-size="11.5" fill="#6e2b4f" font-weight="600">yes</text>
+<rect x="320" y="358" width="300" height="62" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="320" y="358" width="4" height="62" fill="#6e2b4f"/>
+<rect x="320" y="358" width="9" height="62" fill="#6e2b4f" opacity="0"/>
+<text x="470.0" y="384.0" text-anchor="middle" font-size="12.5" fill="#16181d" font-weight="400">Register with email and password</text>
+<text x="470.0" y="402.0" text-anchor="middle" font-size="11.5" fill="#8b919c" font-weight="400">Assigned a handle — calm-maple-3867</text>
+<line x1="470" y1="420" x2="470" y2="452" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="147" y1="452" x2="807" y2="452" stroke="#565c68" stroke-width="1.4"/>
+<line x1="147" y1="452" x2="147" y2="482" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="60" y="482" width="174" height="112" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="60" y="482" width="174" height="3" rx="1.5" fill="#6e2b4f"/>
+<text x="147" y="508" text-anchor="middle" font-size="13.5" fill="#16181d" font-weight="600">Write a post</text>
+<text x="147" y="530" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Category, area, city</text>
+<text x="147" y="547" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Location rounded to ~1km</text>
+<text x="147" y="564" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Published immediately</text>
+<line x1="367" y1="452" x2="367" y2="482" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="280" y="482" width="174" height="112" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="280" y="482" width="174" height="3" rx="1.5" fill="#b4441e"/>
+<text x="367" y="508" text-anchor="middle" font-size="13.5" fill="#16181d" font-weight="600">Raise an alarm</text>
+<text x="367" y="530" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Sound, contacts, or both</text>
+<text x="367" y="547" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Exact location sent</text>
+<text x="367" y="564" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">One tap marks her safe</text>
+<line x1="587" y1="452" x2="587" y2="482" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="500" y="482" width="174" height="112" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="500" y="482" width="174" height="3" rx="1.5" fill="#2e6259"/>
+<text x="587" y="508" text-anchor="middle" font-size="13.5" fill="#16181d" font-weight="600">Offer or ask</text>
+<text x="587" y="530" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">A second handle is used</text>
+<text x="587" y="547" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Someone responds</text>
+<text x="587" y="564" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Both agree the handover</text>
+<line x1="807" y1="452" x2="807" y2="482" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<rect x="720" y="482" width="174" height="112" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="720" y="482" width="174" height="3" rx="1.5" fill="#565c68"/>
+<text x="807" y="508" text-anchor="middle" font-size="13.5" fill="#16181d" font-weight="600">Report something</text>
+<text x="807" y="530" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Post, comment or listing</text>
+<text x="807" y="547" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">Nothing is hidden yet</text>
+<text x="807" y="564" text-anchor="middle" font-size="11" fill="#8b919c" font-weight="400">A moderator decides</text>
+<line x1="50" y1="636" x2="890" y2="640" stroke="#e3e1dc" stroke-width="1"/>
+<text x="50" y="672" text-anchor="start" font-size="14" fill="#16181d" font-weight="600">What is never optional</text>
+<text x="50" y="696" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">A real name is never attached to anything published. The board handle and the donation handle are different, so a request for pads</text>
+<text x="50" y="715" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">cannot be linked to a post about a domestic situation.</text>
+<text x="50" y="753" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Nothing is hidden by a machine. Reports and model scores change queue position only; a person decides what comes down.</text>
+</svg>

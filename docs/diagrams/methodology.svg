@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 786" width="960" height="786" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+<rect width="960" height="786" fill="#f7f6f3"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#565c68"/></marker>
+<marker id="arrowfaint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8b919c"/></marker>
+</defs>
+<text x="50" y="48" font-size="21" font-weight="600" font-family="Georgia, 'Times New Roman', serif" fill="#16181d">Methodology</text>
+<text x="50" y="69" font-size="13" fill="#8b919c">Incremental delivery: one module at a time, each one revised on what testing showed.</text>
+<rect x="50" y="106" width="860" height="62" rx="8" fill="#ffffff" stroke="#cfccc5" stroke-width="1.4"/>
+<rect x="50" y="106" width="4" height="62" fill="#16181d"/>
+<text x="74" y="132" text-anchor="start" font-size="13.5" fill="#16181d" font-weight="600">Groundwork, done once</text>
+<text x="74" y="152" text-anchor="start" font-size="11" fill="#8b919c" font-weight="400">Studied existing safety apps and period-poverty platforms · designed the full schema up front · set up the repository and toolchain</text>
+<line x1="480" y1="168" x2="480" y2="200" stroke="#565c68" stroke-width="1.4" marker-end="url(#arrow)"/>
+<path d="M304.1 253.7 A96 96 0 0 1 348.3 297.9" fill="none" stroke="#cfccc5" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M348.3 382.1 A96 96 0 0 1 304.1 426.3" fill="none" stroke="#cfccc5" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M219.9 426.3 A96 96 0 0 1 175.7 382.1" fill="none" stroke="#cfccc5" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M175.7 297.9 A96 96 0 0 1 219.9 253.7" fill="none" stroke="#cfccc5" stroke-width="1.6" marker-end="url(#arrow)"/>
+<circle cx="262.0" cy="244.0" r="40" fill="#ffffff" stroke="#6e2b4f" stroke-width="1.8"/>
+<text x="262.0" y="249.0" text-anchor="middle" font-size="13.5" fill="#6e2b4f" font-weight="600">Decide</text>
+<text x="262.0" y="182.0" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">what the module</text>
+<text x="262.0" y="196.0" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">must protect</text>
+<circle cx="358.0" cy="340.0" r="40" fill="#ffffff" stroke="#565c68" stroke-width="1.8"/>
+<text x="358.0" y="345.0" text-anchor="middle" font-size="13.5" fill="#565c68" font-weight="600">Build</text>
+<text x="416.0" y="344.0" text-anchor="start" font-size="10.5" fill="#8b919c" font-weight="400">backend first,</text>
+<text x="416.0" y="358.0" text-anchor="start" font-size="10.5" fill="#8b919c" font-weight="400">then the screen</text>
+<circle cx="262.0" cy="436.0" r="40" fill="#ffffff" stroke="#565c68" stroke-width="1.8"/>
+<text x="262.0" y="441.0" text-anchor="middle" font-size="13.5" fill="#565c68" font-weight="600">Test</text>
+<text x="262.0" y="498.0" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">by hand, with</text>
+<text x="262.0" y="512.0" text-anchor="middle" font-size="10.5" fill="#8b919c" font-weight="400">two accounts</text>
+<circle cx="166.0" cy="340.0" r="40" fill="#ffffff" stroke="#b4441e" stroke-width="1.8"/>
+<text x="166.0" y="345.0" text-anchor="middle" font-size="13.5" fill="#b4441e" font-weight="600">Revise</text>
+<text x="108.0" y="344.0" text-anchor="end" font-size="10.5" fill="#8b919c" font-weight="400">when the test</text>
+<text x="108.0" y="358.0" text-anchor="end" font-size="10.5" fill="#8b919c" font-weight="400">shows a flaw</text>
+<text x="262" y="335" text-anchor="middle" font-size="12.5" fill="#16181d" font-weight="600">one module</text>
+<text x="262" y="353" text-anchor="middle" font-size="12.5" fill="#16181d" font-weight="600">at a time</text>
+<text x="534" y="226" text-anchor="start" font-size="11" fill="#8b919c" font-weight="600">MODULES, IN ORDER</text>
+<line x1="534" y1="236" x2="910" y2="236" stroke="#e3e1dc" stroke-width="1"/>
+<circle cx="546" cy="258" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="262" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Auth and handles</text>
+<circle cx="546" cy="280" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="284" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Posts and filtering</text>
+<circle cx="546" cy="302" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="306" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">SOS and contacts</text>
+<circle cx="546" cy="324" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="328" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Comments</text>
+<circle cx="546" cy="346" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="350" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Reports and moderation</text>
+<circle cx="546" cy="368" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="372" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Fake call</text>
+<circle cx="546" cy="390" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="394" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Helpline directory</text>
+<circle cx="546" cy="412" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="416" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Content scoring</text>
+<circle cx="546" cy="434" r="3.5" fill="#6e2b4f"/>
+<text x="564" y="438" text-anchor="start" font-size="12" fill="#565c68" font-weight="400">Donation board</text>
+<text x="534" y="472" text-anchor="start" font-size="11" fill="#8b919c" font-weight="400">Each one shipped working before the next began, so a</text>
+<text x="534" y="488" text-anchor="start" font-size="11" fill="#8b919c" font-weight="400">half-finished feature never blocked another.</text>
+<line x1="50" y1="540" x2="910" y2="540" stroke="#e3e1dc" stroke-width="1"/>
+<text x="50" y="570" text-anchor="start" font-size="14.5" fill="#16181d" font-weight="600">Where testing actually changed the design</text>
+<circle cx="60" cy="598" r="3.5" fill="#b4441e"/>
+<text x="78" y="602" text-anchor="start" font-size="11.5" fill="#16181d" font-weight="600">PostGIS was unavailable on the target database</text>
+<text x="78" y="619" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Spatial columns became plain numeric ones, with distance computed in the service layer.</text>
+<circle cx="60" cy="643" r="3.5" fill="#b4441e"/>
+<text x="78" y="647" text-anchor="start" font-size="11.5" fill="#16181d" font-weight="600">The toxicity model scored an assault report at 0.0021 and an insult at 0.9851</text>
+<text x="78" y="664" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Scoring moved from posts to comments, and was made advisory rather than automatic.</text>
+<circle cx="60" cy="688" r="3.5" fill="#b4441e"/>
+<text x="78" y="692" text-anchor="start" font-size="11.5" fill="#16181d" font-weight="600">A single unanswered response hid an offer from everyone else</text>
+<text x="78" y="709" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Accepting takes a listing off the board; merely responding does not.</text>
+<circle cx="60" cy="733" r="3.5" fill="#b4441e"/>
+<text x="78" y="737" text-anchor="start" font-size="11.5" fill="#16181d" font-weight="600">A donor with five packs could only ever help one person</text>
+<text x="78" y="754" text-anchor="start" font-size="11.5" fill="#565c68" font-weight="400">Added a split option, so accepting someone leaves the listing open.</text>
+</svg>
