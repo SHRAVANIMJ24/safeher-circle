@@ -1,0 +1,1195 @@
+/* ============================================================
+   SafeHer Circle
+
+   Direction: a civic utility, not a wellness product. People arrive
+   here worried, often on a phone, sometimes at night. So: high
+   contrast, generous line length, nothing that flashes or bounces,
+   and no pastel-pink shorthand for "for women".
+
+   Boldness is spent in two places and nowhere else. The handle chip,
+   because a pseudonym is the core mechanic of this site. And the
+   alarm, because in an emergency nobody reads a row of labels.
+   Everything else is deliberately quiet so those two can be loud.
+   ============================================================ */
+
+:root {
+    --ink:          #16181d;
+    --ink-soft:     #565c68;
+    --ink-faint:    #8b919c;
+    --paper:        #f7f6f3;
+    --surface:      #ffffff;
+    --line:         #e3e1dc;
+    --line-strong:  #cfccc5;
+
+    --plum:         #6e2b4f;
+    --plum-soft:    #f3e8ee;
+    --sage:         #2e6259;
+    --sage-soft:    #e7f0ed;
+    --alert:        #b4441e;
+    --alert-soft:   #fdf1ec;
+    --alert-line:   #e8c4b4;
+    --alert-ink:    #8c3416;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body:    "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+    --radius:       10px;
+    --radius-sm:    6px;
+
+    --measure:      68ch;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 76px;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    font-variation-settings: "SOFT" 20, "WONK" 1;
+}
+
+a { color: var(--plum); }
+
+button { font: inherit; }
+
+:focus-visible {
+    outline: 2px solid var(--plum);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ---------- layout ---------- */
+
+.shell {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+}
+
+.stack > * + * { margin-top: 18px; }
+
+/* ============================================================
+   HEADER
+
+   Three kinds of destination, treated as three kinds of thing:
+   public sections as navigation links, the alarm as its own
+   coloured control, and everything personal behind the handle.
+   ============================================================ */
+
+.masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+.masthead-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    font-variation-settings: "SOFT" 40, "WONK" 1;
+}
+
+.mark {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+/* The dot is the only coloured part, so the ring can take the ink colour
+   from whatever it sits on — dark header, light footer, or reversed. */
+.mark-dot { fill: var(--plum); }
+
+/* Below 480px the wordmark loses its text and keeps the mark, which is
+   what the mark is for. */
+@media (max-width: 480px) {
+    .wordmark span { display: none; }
+    .mark { width: 26px; height: 26px; }
+}
+
+.masthead-spacer { flex: 1; }
+
+/* Navigation reads as navigation. These were buttons, which said "press
+   me to make something happen" about things that only move you around. */
+.masthead-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.masthead-link {
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 20px 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 120ms ease, border-color 120ms ease;
+}
+
+.masthead-link:hover { color: var(--ink); }
+
+.masthead-link.active {
+    color: var(--ink);
+    border-bottom-color: var(--plum);
+}
+
+.masthead-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ---------- the alarm ---------- */
+
+/* The only coloured control in the header and the only one with an icon,
+   so it can be found by shape and colour without reading. */
+.alarm-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--alert-line);
+    background: var(--alert-soft);
+    color: var(--alert);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 120ms ease;
+}
+
+.alarm-link:hover { background: #fae2d8; }
+
+.alarm-link svg { width: 17px; height: 17px; }
+
+/* ---------- the account menu ---------- */
+
+.menu { position: relative; }
+
+.menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px 5px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-trigger:hover,
+.menu-trigger[aria-expanded="true"] { background: var(--paper); }
+
+.chevron {
+    width: 15px;
+    height: 15px;
+    color: var(--ink-faint);
+}
+
+.menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 208px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 6px;
+    box-shadow: 0 8px 24px rgba(22, 24, 29, 0.10);
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: none;
+    background: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+.menu-item:hover { background: var(--paper); }
+
+.menu-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 5px 8px;
+}
+
+.unread-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--alert);
+    flex-shrink: 0;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.btn:hover { background: var(--paper); }
+
+.btn-primary {
+    background: var(--plum);
+    color: #fff;
+    border-color: var(--plum);
+}
+.btn-primary:hover { background: #5b2342; }
+
+.btn-outline { border-color: var(--line-strong); }
+.btn-outline:hover { border-color: var(--ink-faint); background: transparent; }
+
+.btn-safe {
+    background: var(--sage);
+    color: #fff;
+    border-color: var(--sage);
+}
+.btn-safe:hover { background: #245049; }
+
+.btn-remove {
+    background: var(--alert);
+    color: #fff;
+    border-color: var(--alert);
+}
+.btn-remove:hover { background: #97381a; }
+
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-block { width: 100%; }
+
+.link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 8px;
+    color: var(--plum);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* ---------- page intro ---------- */
+
+.page-head { padding: 40px 0 20px; }
+
+.page-head h1 {
+    font-size: clamp(30px, 5vw, 38px);
+    letter-spacing: -0.02em;
+}
+
+.page-head p {
+    margin: 10px 0 0;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+}
+
+/* Section headings within a page. Small and quiet so they organise
+   without competing with the page title. */
+.directory-heading {
+    font-size: 13px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin: 36px 0 14px;
+}
+
+.directory-heading:first-of-type { margin-top: 8px; }
+
+/* ---------- filters ---------- */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 20px;
+}
+
+.chip {
+    padding: 6px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+.chip[aria-pressed="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+/* ---------- form controls ---------- */
+
+.field { display: block; }
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.field-hint {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+}
+
+textarea { resize: vertical; min-height: 160px; line-height: 1.6; }
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--plum);
+    outline-offset: 0;
+    border-color: var(--plum);
+}
+
+.field-error {
+    display: block;
+    font-size: 13px;
+    color: var(--alert);
+    margin-top: 5px;
+}
+
+/* A labelled checkbox with an explanation. Distinct from .sound, which
+   carries a selected state that a checkbox never uses. */
+.choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    cursor: pointer;
+}
+
+.choice:hover { border-color: var(--line-strong); }
+
+.choice input { width: auto; margin: 3px 0 0; flex-shrink: 0; }
+
+.choice-text { display: flex; flex-direction: column; gap: 2px; }
+.choice-text strong { font-size: 15px; }
+.choice-text span { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+/* ---------- cards ---------- */
+
+.feed { list-style: none; margin: 0; padding: 0; }
+
+.feed > li + li { margin-top: 12px; }
+
+.card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 120ms ease;
+}
+
+.card:hover { border-color: var(--line-strong); }
+
+/* A closed listing recedes rather than competing with live ones. */
+.card-closed { opacity: 0.62; }
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+}
+
+.card h2 {
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+}
+
+/* Titles inside cards were inheriting the plum accent, which made a list
+   of linked cards read as a wall of purple. */
+.card h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+.card h2 a:hover { text-decoration: underline; }
+
+.card-body {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-foot {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--ink-faint);
+}
+
+/* ---------- the handle chip: this site's signature ---------- */
+
+/* Monospaced, because it is a generated identifier and should not read as
+   a name. The hue is derived by hashing the handle text, so the same
+   pseudonym is the same shade everywhere with nothing extra stored. */
+.handle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: -0.02em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: hsl(var(--handle-hue) 44% 94%);
+    color: hsl(var(--handle-hue) 52% 28%);
+    white-space: nowrap;
+}
+
+.category-tag {
+    font-size: 13px;
+    color: var(--plum);
+    font-weight: 500;
+}
+
+.dot { color: var(--line-strong); }
+
+/* ---------- tags ---------- */
+
+.need-tag,
+.give-tag,
+.reason-tag,
+.org-badge,
+.op-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Needs and offers are colour-coded but not shouted. Someone asking for
+   pads should not have her listing look like an alarm. */
+.need-tag { background: var(--plum-soft); color: var(--plum); }
+.give-tag { background: var(--sage-soft); color: var(--sage); }
+.org-badge { background: var(--sage-soft); color: var(--sage); }
+.op-badge { background: var(--plum-soft); color: var(--plum); }
+.reason-tag { background: var(--alert-soft); color: var(--alert-ink); }
+
+.status-word {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: lowercase;
+}
+
+/* ---------- post detail ---------- */
+
+.article {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+}
+
+.article h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.article-body {
+    margin: 20px 0 0;
+    font-size: 17px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    max-width: var(--measure);
+}
+
+/* ---------- panels ---------- */
+
+.panel {
+    max-width: 420px;
+    margin: 48px auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 34px;
+}
+
+.panel-wide { max-width: 640px; }
+
+.panel h1 { font-size: 25px; margin-bottom: 6px; }
+
+.panel-intro {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 24px;
+}
+
+.panel-foot {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-align: center;
+}
+
+/* ---------- notices ---------- */
+
+.notice {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    border: 1px solid;
+}
+
+.notice-error {
+    background: var(--alert-soft);
+    border-color: var(--alert-line);
+    color: var(--alert-ink);
+}
+
+.notice-quiet {
+    background: var(--plum-soft);
+    border-color: #e2cdd8;
+    color: var(--plum);
+}
+
+/* ---------- empty and loading ---------- */
+
+.empty {
+    text-align: center;
+    padding: 56px 20px;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+}
+
+.empty h2 { font-size: 19px; margin-bottom: 6px; color: var(--ink); }
+
+.skeleton {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    height: 118px;
+}
+
+/* ---------- footer ---------- */
+
+.site-foot {
+    border-top: 1px solid var(--line);
+    margin-top: 56px;
+    padding: 24px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+.site-foot strong { color: var(--ink); }
+
+/* ============================================================
+   ALARM
+   ============================================================ */
+
+.panic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 0 8px;
+}
+
+/* Large, centred, thumb-reachable. The size is not decoration: this gets
+   pressed in a hurry, possibly one-handed, possibly without looking. */
+.panic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--alert);
+    background: var(--surface);
+    color: var(--alert);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    cursor: pointer;
+    padding: 0 24px;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.panic:hover { background: var(--alert-soft); }
+
+.panic-on {
+    background: var(--alert);
+    color: #fff;
+    animation: panic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes panic-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(180, 68, 30, 0.4); }
+    50%      { box-shadow: 0 0 0 16px rgba(180, 68, 30, 0); }
+}
+
+.alert-live {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    background: var(--alert-soft);
+    border: 1px solid var(--alert-line);
+    color: var(--alert-ink);
+}
+
+.sound-list { display: flex; flex-direction: column; gap: 10px; }
+
+.sound {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    cursor: pointer;
+}
+
+.sound-on { border-color: var(--plum); background: var(--plum-soft); }
+
+.sound input { width: auto; margin: 0; }
+
+.sound-text { flex: 1; display: flex; flex-direction: column; }
+.sound-text strong { font-size: 15px; }
+.sound-text span { font-size: 14px; color: var(--ink-soft); }
+
+.contact-list { list-style: none; margin: 0; padding: 0; }
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.contact-list li:last-child { border-bottom: none; }
+
+.contact-list strong { display: block; font-size: 15px; }
+.contact-list span { font-size: 14px; color: var(--ink-soft); }
+
+/* ============================================================
+   COMMENTS
+   ============================================================ */
+
+.thread { margin-top: 32px; }
+
+.thread-head {
+    font-size: 19px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.comment-form { margin-bottom: 28px; }
+.comment-form textarea { margin-bottom: 10px; }
+
+.comment-list { list-style: none; margin: 0; padding: 0; }
+
+.comment-list > li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.comment-list > li:last-child { border-bottom: none; }
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+}
+
+.comment-body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    max-width: var(--measure);
+}
+
+/* One level of indent, marked with a rule rather than whitespace alone.
+   On a narrow screen indentation by itself is too subtle to read. */
+.comment-replies {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0 0 0 16px;
+    border-left: 2px solid var(--line);
+}
+
+.comment-replies > li { padding: 12px 0; }
+
+/* ============================================================
+   REPORTING AND MODERATION
+   ============================================================ */
+
+/* Small and grey on purpose. A prominent report button on a board about
+   harassment gets used as a weapon against posts people merely dislike. */
+.report-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.report-trigger:hover { color: var(--ink-soft); }
+
+.report-done { font-size: 13px; color: var(--sage); }
+
+.report-box {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+}
+
+.report-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.report-reason {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.report-reason input { width: auto; margin: 0; }
+
+.report-detail {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    background: var(--paper);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+/* ============================================================
+   FAKE CALL
+   ============================================================ */
+
+/* Full-bleed and dark, covering the header and navigation. The illusion
+   fails completely if any trace of a website shows to whoever is standing
+   next to her. */
+.call-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #14161a;
+    color: #f3f2f0;
+    padding: 56px 24px 48px;
+}
+
+.call-top { text-align: center; }
+
+.call-status {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #9aa0aa;
+    letter-spacing: 0.01em;
+}
+
+.call-name {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #f3f2f0;
+    margin: 0;
+}
+
+.call-subtitle {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: #9aa0aa;
+}
+
+.call-avatar {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: #2a2e36;
+    color: #c9ccd2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 40px;
+    margin: 48px 0 auto;
+}
+
+.call-actions {
+    display: flex;
+    gap: 56px;
+    margin-top: auto;
+}
+
+.call-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    color: #9aa0aa;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.call-btn svg {
+    width: 30px;
+    height: 30px;
+    padding: 19px;
+    border-radius: 50%;
+    color: #fff;
+    box-sizing: content-box;
+}
+
+.call-answer svg { background: #2e8b57; }
+.call-decline svg { background: #c9402a; }
+
+/* Only the answer button pulses. It is the one to reach for in a hurry. */
+.call-answer svg { animation: call-breathe 1.6s ease-in-out infinite; }
+
+@keyframes call-breathe {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46, 139, 87, 0.5); }
+    50%      { box-shadow: 0 0 0 14px rgba(46, 139, 87, 0); }
+}
+
+.call-hint {
+    margin: 22px 0 0;
+    font-size: 13px;
+    color: #6f757f;
+    text-align: center;
+    max-width: 34ch;
+}
+
+/* ============================================================
+   DIRECTORY
+   ============================================================ */
+
+.org-list { list-style: none; margin: 0; padding: 0; }
+
+.org-list > li + li { margin-top: 12px; }
+
+.org {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+}
+
+.org-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.org-head h3 {
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.org-type {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--ink-faint);
+}
+
+.org-body {
+    margin: 10px 0 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+}
+
+.org-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+/* Stated plainly rather than hidden in small print. Someone deciding
+   whether to trust a number needs to know how much checking stands
+   behind it. */
+.org-unverified {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+}
+
+/* ============================================================
+   DONATION BOARD
+   ============================================================ */
+
+.listing-hidden {
+    margin: 8px 0 0;
+    font-size: 15px;
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
+.claim-thread {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+}
+
+.message-list { list-style: none; margin: 0; padding: 0; }
+
+.message-list > li + li {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+}
+
+/* The arrangement sits above the messages. Where and when you are meeting
+   is the one thing both people need at a glance, and it is exactly what
+   gets lost in a chat. */
+.handover {
+    padding: 16px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    margin-bottom: 16px;
+}
+
+.handover-agreed {
+    border-color: var(--sage);
+    background: var(--sage-soft);
+}
+
+.handover-done {
+    border-color: var(--line);
+    background: var(--paper);
+    color: var(--ink-soft);
+}
+
+/* System messages read as plain grey lines between the human ones. They
+   are deliberately not styled as anybody speaking — nobody said this,
+   it just happened. */
+.system-message {
+    font-size: 13px;
+    color: var(--ink-faint);
+    text-align: center;
+    padding: 10px 0;
+    border-top: none !important;
+    margin-top: 0 !important;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+.mobile-nav { display: none; }
+
+/* Section links go first, since the bottom bar carries them below 720px
+   and the header would otherwise crowd before then. */
+@media (max-width: 860px) {
+    .masthead-links { display: none; }
+    .masthead-inner { gap: 12px; }
+}
+
+@media (max-width: 720px) {
+
+    .mobile-nav {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        /* Clears the home indicator on phones with gesture navigation. */
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        /* 56px keeps every target above a comfortable tap size, which
+           matters more here than usual: a shaking hand needs a bigger
+           target than a calm one. */
+        min-height: 56px;
+        padding: 8px 4px;
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 11px;
+        letter-spacing: 0.01em;
+    }
+
+    .mobile-nav-item svg { width: 22px; height: 22px; }
+    .mobile-nav-item.active { color: var(--ink); }
+
+    .mobile-nav-alarm,
+    .mobile-nav-alarm.active { color: var(--alert); }
+
+    /* Room for the bar, so the last line of a post is never hidden
+       behind it. Fixed elements take up no layout space. */
+    body { padding-bottom: 64px; }
+
+    /* The alarm has its own slot in the bottom bar, so the header one
+       would be a duplicate. */
+    .alarm-link { display: none; }
+
+    .shell { padding-left: 16px; padding-right: 16px; }
+
+    .panic { width: 170px; height: 170px; font-size: 18px; }
+
+    .panel { margin: 24px auto; padding: 24px; }
+
+    .article { padding: 22px; }
+
+    .call-actions { gap: 40px; }
+}
